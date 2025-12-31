@@ -1,14 +1,10 @@
 import pandas as pd
 
 
-DATA_PATH = "data/clean/Average_UK_houseprices_and_salary_clean.csv"
-# If your file is somewhere else, change DATA_PATH to match your repo path exactly.
-
+DATA_PATH = "data/clean/Average_UK_houseprices_and_salary.csv"
 
 def load_data() -> pd.DataFrame:
     df = pd.read_csv(DATA_PATH)
-
-    # Standardise column names (strip spaces) to avoid false failures
     df.columns = [c.strip() for c in df.columns]
     return df
 
