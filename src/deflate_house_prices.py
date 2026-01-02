@@ -54,19 +54,46 @@ def deflate_house_prices(df: pd.DataFrame) -> pd.DataFrame:
     return out
 
 
-def plot_nominal_vs_real(df: pd.DataFrame, out_path="outputs/nominal_vs_real_house_prices.png") -> None:
+from matplotlib.ticker import FuncFormatter
+
+
+def plot_nominal_vs_real(
+    df: pd.DataFrame,
+    out_path="outputs/nominal_vs_real_house_prices.png",
+) -> None:
     os.makedirs(os.path.dirname(out_path), exist_ok=True)
 
-    plt.figure(figsize=(12, 5))
-    plt.plot(df["t"], df["UK_Average_House_Price"], label="Nominal House Price (£)", color="black")
-    plt.plot(df["t"], df["Real_House_Price"], label="Real House Price (CPI-adjusted, base=first quarter)", linestyle="--")
-    plt.xlabel("Time (quarters)")
-    plt.ylabel("Average House Price (£)")
-    plt.title("UK Average House Prices: Nominal vs Real (CPI-adjusted)")
-    plt.grid(True)
-    plt.legend()
-    plt.tight_layout()
-    plt.savefig(out_path)
+    fig, ax = plt.subplots(figsize=(12, 5))
+
+    # Plot using t for spacing
+    ax.plot(
+        df["t"],
+        df["UK_Average_House_Price"],
+        label="Nominal House Price (£)",
+        color="black",
+    )
+    ax.plot(
+        df["t"],
+        df["Real_House_Price"],
+        label="Real House Price (CPI-adjusted, base=first quarter)",
+        linestyle="--",
+    )
+    year_ticks = df.groupby("Year")["t"].first()
+    ax.set_xticks(year_ticks.values)
+    ax.set_xticklabels(year_ticks.index.astype(int), rotation=45)
+    ax.set_xlabel("Year")
+
+    ax.yaxis.set_major_formatter(
+        FuncFormatter(lambda x, pos: f"£{int(x):,}")
+    )
+    ax.set_ylabel("Average House Price (£)")
+
+    ax.set_title("UK Average House Prices: Nominal vs Real (CPI-adjusted)")
+    ax.grid(True)
+    ax.legend()
+
+    fig.tight_layout()
+    fig.savefig(out_path)
     plt.show()
 
 
