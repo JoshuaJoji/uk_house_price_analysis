@@ -35,32 +35,32 @@ Raw datasets are stored in `data/raw/` and cleaned outputs are stored in `data/c
 
 ## Cleaning & Processing Pipeline
 
-Scripts are implemented as separate Python files (run from repo root).
+All cleaning and processing scripts are located in the `src/` directory and are run from the repository root.
 
 ### 1) Cleaning scripts (`data/raw` → `data/clean`)
 
-1. `clean_house_price_quarterly.py`
+1. `src/clean_house_price_quarterly.py`
    - Reads raw house price file
    - Parses dates and filters from **2011 onwards**
    - Aggregates to quarterly mean
    - Outputs: `data/clean/uk_house_price_quarterly.csv`
 
-2. `clean_bank_rate_quarterly.py`
+2. `src/clean_bank_rate_quarterly.py`
    - Reads raw base rate file
    - Filters from **2011 onwards**
    - Aggregates to quarterly mean
    - Outputs: `data/clean/bank_rate_quarterly.csv`
 
-3. `clean_cpi_quarterly.py`
+3. `src/clean_cpi_quarterly.py`
    - Removes non-data rows from CPI file
    - Converts date column and derives Year/Quarter
    - Aggregates to quarterly CPI averages
    - Outputs: `data/clean/cpi_quarterly_avg.csv`
 
-4. `clean_real_house_price_salary.py`
+4. `src/clean_real_house_price_salary.py`
    - Removes extra header rows and drops empty columns
    - Standardises schema: `Year`, `Real_House_Price`, `Real_Median_Salary`
-   - Outputs: `data/clean/Average_UK_houseprices_and_salary_clean.csv` *(if used in your workflow)*
+   - Outputs: `data/clean/Average_UK_houseprices_and_salary_clean.csv`
 
 ---
 
