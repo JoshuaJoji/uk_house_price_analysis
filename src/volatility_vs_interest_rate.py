@@ -46,11 +46,9 @@ def plot_and_correlate(df):
     print(f"Pearson r: {r:.3f}")
     print(f"p-value: {p:.4f}")
 
-
 def main():
     df = load_and_merge()
     plot_and_correlate(df)
-
 
 if __name__ == "__main__":
     main()
