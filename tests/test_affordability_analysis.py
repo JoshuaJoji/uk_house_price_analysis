@@ -1,7 +1,7 @@
 import pandas as pd
 from pathlib import Path
 
-from affordability_analysis import load_affordability_data, compute_affordability_ratio
+from src.affordability_analysis import load_affordability_data, compute_affordability_ratio
 
 DATA_PATH = Path("data/clean/Average_UK_houseprices_and_salary.csv")
 
