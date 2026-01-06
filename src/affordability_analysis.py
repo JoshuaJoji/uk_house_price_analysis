@@ -2,12 +2,13 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import os
 
-
+# Load data from cleaned CSV file
 def load_affordability_data(
     path="data/clean/Average_UK_houseprices_and_salary.csv",
 ):
     df = pd.read_csv(path)
 
+# Ensure correct data types
     df["Year"] = pd.to_numeric(df["Year"], errors="coerce")
     df["Real_House_Price"] = pd.to_numeric(df["Real_House_Price"], errors="coerce")
     df["Real_Median_Salary"] = pd.to_numeric(df["Real_Median_Salary"], errors="coerce")
@@ -16,13 +17,14 @@ def load_affordability_data(
 
     return df
 
-
+# Compute affordability ratio
 def compute_affordability_ratio(df):
     df = df.copy()
     df["Affordability_Ratio"] = (
         df["Real_House_Price"] / df["Real_Median_Salary"])
     return df
 
+# Plot affordability ratio over time
 def plot_affordability(df, out_path="outputs/affordability_ratio_over_time.png"):
     os.makedirs(os.path.dirname(out_path), exist_ok=True)
 
@@ -44,13 +46,10 @@ def plot_affordability(df, out_path="outputs/affordability_ratio_over_time.png")
     plt.savefig(out_path)
     plt.show()
 
-
 def main():
     df = load_affordability_data()
     df = compute_affordability_ratio(df)
-
     plot_affordability(df)
-
     print(df.head())
 
 if __name__ == "__main__":

@@ -43,6 +43,5 @@ def clean_and_average_cpi(
     print(quarterly_avg.head())
     print(f"Rows: {len(quarterly_avg)}")
 
-
 if __name__ == "__main__":
     clean_and_average_cpi()
