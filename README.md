@@ -1,6 +1,8 @@
 # uk_house_price_analysis
 
-[![CircleCI](https://dl.circleci.com/status-badge/img/gh/JoshuaJoji/uk_house_price_analysis/tree/main.svg?style=svg)](https://app.circleci.com/pipelines/github/JoshuaJoji/uk_house_price_analysis?branch=main)
+<a href="https://app.circleci.com/pipelines/github/JoshuaJoji/uk_house_price_analysis?branch=main" target="_blank" rel="noopener noreferrer">
+  <img src="https://dl.circleci.com/status-badge/img/gh/JoshuaJoji/uk_house_price_analysis/tree/main.svg?style=svg" alt="CircleCI Status">
+</a>
 
 This repository contains the datasets, cleaning pipeline, analysis scripts, and unit tests for my DAT5501 project.  
 The project explores how UK house prices relate to **inflation (CPI)**, the **Bank of England base rate**, **affordability**, and **market volatility**.
